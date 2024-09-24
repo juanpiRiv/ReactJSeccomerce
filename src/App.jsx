@@ -1,22 +1,15 @@
-import React, {useState} from 'react';
-// 1. import `ChakraProvider` component
-import { ChakraProvider } from '@chakra-ui/react';
-import NavBar from './components/NavBar/NavBar';
-import ItemListContainer from './components/ItemListContainer/ItemListContainer'
-import Home from './pages/home';
-import { MainRouter } from './router/MainRouter';
-import MainLayout from './layout/MainLayout';
-
-
+import React from "react";
+import { ChakraProvider } from "@chakra-ui/react";
+import MainLayout from "./layout/MainLayout";
+import { MainRouter } from "./router";
 const App = () => {
-
-  //const [count,setCount]= useState(0);
-  
   return (
     <ChakraProvider>
-    <NavBar />
-    <Home />
+      <MainLayout>
+        <MainRouter />
+      </MainLayout>
     </ChakraProvider>
-  )
-}
-export default App
+  );
+};
+
+export default App;
