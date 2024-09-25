@@ -7,9 +7,9 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/ReactJSeccomerce',
   plugins: [react()],
   server: {
-    base: 'https://juanpiRiv.github.com/ReactJSeccomerce',
     historyApiFallback: true,
     strictPort: true,
     caseSensitive: false },
