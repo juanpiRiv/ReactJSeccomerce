@@ -51,6 +51,7 @@ export const NavBar = () => {
 
                             />
                         </Link>
+                        <Link to="/">
                         <Text
                             ml={0} 
                             fontSize="xl" 
@@ -59,6 +60,7 @@ export const NavBar = () => {
                         >
                             AllMarket
                         </Text>
+                        </Link>
                     </Flex>
                     <Menu>
                         <MenuButton as={Button} cursor="pointer" style={{ marginLeft: 30 }}>
