@@ -1,6 +1,7 @@
 {
   "name": "proyect-react",
   "private": true,
+  "homepage": "https://github.com/juanpiRiv/ReactJSeccomerce",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
