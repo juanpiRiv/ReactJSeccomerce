@@ -14,14 +14,13 @@ import {
     useColorMode,
     Center,
     Image,
+    Text,
 } from "@chakra-ui/react";
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
-import { CardWidget } from "../CardWidget";
+import { CartWidget } from "../CartWidget";
 import { useCategory } from "../../hooks";
 import { Link } from "react-router-dom";
 import logo from '../../assets/LOGO.png';
-import { Text } from "@chakra-ui/react";
-
 
 export const NavBar = () => {
     const { colorMode, toggleColorMode } = useColorMode();
@@ -35,36 +34,33 @@ export const NavBar = () => {
                 <Flex h={16} alignItems={"center"} justifyContent={"space-between"}>
                     <Flex alignItems={"center"}>
                         <Link to="/">
-
-                            <Image src={logo}
+                            <Image 
+                                src={logo}
                                 alt="logo"
                                 marginTop="2px"
                                 objectFit="contain"
                                 ml={0}
                                 boxSize="100px"
                                 borderRadius="full"
-
                                 transition="all 0.3s ease"
                                 filter="brightness(0.9)"
                                 _hover={{ transform: "rotate(10deg)", filter: "brightness(1.2)" }}
-
-
                             />
                         </Link>
                         <Link to="/">
-                        <Text
-                            ml={0} 
-                            fontSize="xl" 
-                            fontWeight="bold"  
-                            color={useColorModeValue("black")} 
-                        >
-                            AllMarket
-                        </Text>
+                            <Text
+                                ml={3}
+                                fontSize="xl"
+                                fontWeight="bold"
+                                color={useColorModeValue("black", "white")}
+                            >
+                                AllMarket
+                            </Text>
                         </Link>
                     </Flex>
                     <Menu>
                         <MenuButton as={Button} cursor="pointer" style={{ marginLeft: 30 }}>
-                            Categorias
+                            Categorías
                         </MenuButton>
                         <MenuList height={"300px"} overflowY={"scroll"}>
                             {categories.map((category) => (
@@ -75,7 +71,7 @@ export const NavBar = () => {
                         </MenuList>
                     </Menu>
                     <Flex alignItems={"center"}>
-                        <CardWidget />
+                        <CartWidget />
                         <Stack direction={"row"} spacing={7}>
                             <Button onClick={toggleColorMode}>
                                 {colorMode === "light" ? <MoonIcon /> : <SunIcon />}

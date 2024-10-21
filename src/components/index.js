@@ -1,4 +1,4 @@
-export * from "./CardWidget";
+export * from "./CartWidget";
 export * from "./ItemCount";
 export * from "./ItemListContainer";
 export * from "./Loader";
