@@ -15,23 +15,10 @@ import {
 import { useContext, useState } from "react";
 import { MdLocalShipping } from "react-icons/md";
 import { CartContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 
-export const ItemDetailContainer = ({ item }) => {
-    const [count, setCount] = useState(0);
 
-    const { cartState, addItem, removeItem } = useContext(CartContext);
-
-    const handleAddItem = () => {
-        const newCount = count + 1;
-        setCount(newCount);
-        addItem(item, newCount);
-    };
-
-    const handleRemoveItem = () => {
-        setCount(count - 1);
-        removeItem(item);
-    };
-
+const ItemDetail = ({ item, handleAddItem, handleRemoveItem, count, setCount , handleNavigateCheckout }) => {
     return (
         <Container maxW={"7xl"}>
             <SimpleGrid
@@ -81,7 +68,12 @@ export const ItemDetailContainer = ({ item }) => {
                             <Text fontSize={"lg"}>{item.description}</Text>
                         </VStack>
                     </Stack>
-
+                    <Flex>
+                        <Text>
+                            Stock:{" "}
+                            {item.stock < 20 ? "Ultimas unidades disponibles" : item.stock}
+                        </Text>
+                    </Flex>
                     <Flex
                         justifyContent={"space-between"}
                         width={"20%"}
@@ -91,7 +83,9 @@ export const ItemDetailContainer = ({ item }) => {
                         <Text>{count}</Text>
                         <Button onClick={handleAddItem}>+</Button>
                     </Flex>
-
+                        <Stack direction="row" alignItems="center" justifyContent={"center"}>
+                        <Button onClick={handleNavigateCheckout}>Add to Cart</Button>
+                        </Stack>
                     <Stack direction="row" alignItems="center" justifyContent={"center"}>
                         <MdLocalShipping />
                         <Text>2-3 business days delivery</Text>
@@ -99,5 +93,38 @@ export const ItemDetailContainer = ({ item }) => {
                 </Stack>
             </SimpleGrid>
         </Container>
+    );
+};
+export const ItemDetailContainer = ({ item }) => {
+    const [count, setCount] = useState(0);
+
+    const { addItem, removeItem } = useContext(CartContext);
+    
+    const navigate = useNavigate();
+
+    const handleAddItem = () => {
+        const newCount = count + 1;
+        setCount(newCount);
+        addItem(item, newCount);
+    };
+
+    const handleRemoveItem = () => {
+        setCount(count - 1);
+        removeItem(item);
+    };
+    
+    const handleNavigateCheckout = () => {
+        navigate("/checkout");
+    };
+
+    return (
+        <ItemDetail
+            item={item}
+            handleAddItem={handleAddItem}
+            handleRemoveItem={handleRemoveItem}
+            count={count}
+            setCount={setCount}
+            handleNavigateCheckout={handleNavigateCheckout}
+        />
     );
 };

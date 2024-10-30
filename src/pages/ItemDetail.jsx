@@ -9,6 +9,6 @@ export const ItemDetail = () => {
     const { id } = useParams();
 
     const { product, loading } = useItemById(id);
-
+    
     return loading ? <Loader /> : <ItemDetailContainer item={product} />;
 };
